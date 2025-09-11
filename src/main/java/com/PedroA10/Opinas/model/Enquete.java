@@ -2,6 +2,7 @@ package com.PedroA10.Opinas.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -31,8 +32,8 @@ public class Enquete {
     @ManyToOne
     private Usuario usuario;
 
-    @NotEmpty
-    @OneToMany(mappedBy = "enquete", cascade = CascadeType.ALL)
+    @NotNull
+    @OneToMany(mappedBy = "enquete", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Opcao> opcoes = new ArrayList<>();
 
 }

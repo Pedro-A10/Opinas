@@ -14,9 +14,6 @@ public class Votos extends Usuario {
     private String comentario;
 
     @ManyToOne
-    private Usuario usuario;
-
-    @ManyToOne
     private Opcao opcao;
 }
 

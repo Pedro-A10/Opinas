@@ -14,6 +14,9 @@ public class Opcao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ElementCollection
+    private List<Opcao> opcoes;
+
     @NotEmpty
     private String texto;
 
