@@ -11,9 +11,12 @@ public class Votos extends Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String comentario;
+    @ManyToOne
+    @JoinColumn(name = "opcao_id")
+    private Opcao opcao;
 
     @ManyToOne
-    private Opcao opcao;
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }
 

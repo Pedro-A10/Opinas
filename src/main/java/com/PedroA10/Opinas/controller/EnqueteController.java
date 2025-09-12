@@ -4,6 +4,7 @@ import com.PedroA10.Opinas.model.Enquete;
 import com.PedroA10.Opinas.model.Usuario;
 import com.PedroA10.Opinas.repository.EnqueteRepository;
 import com.PedroA10.Opinas.repository.UsuarioRepository;
+import com.PedroA10.Opinas.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class EnqueteController {
     private EnqueteRepository enqueteRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @GetMapping
     public List<Enquete> listarEnquetes(){
@@ -40,7 +41,7 @@ public class EnqueteController {
 
     @PostMapping
     public ResponseEntity<Enquete> criarEnquete(@RequestBody Enquete enquete) {
-        Usuario usuario = usuarioRepository.findById(1L).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Usuario usuario = usuarioService.findById(1L).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         enquete.setUsuario(usuario);
 
         Enquete novaEnquete = enqueteRepository.save(enquete);
