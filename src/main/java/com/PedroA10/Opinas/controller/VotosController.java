@@ -2,9 +2,10 @@ package com.PedroA10.Opinas.controller;
 
 import com.PedroA10.Opinas.model.Opcao;
 import com.PedroA10.Opinas.model.Votos;
-import com.PedroA10.Opinas.repository.OpcaoRepository;
-import com.PedroA10.Opinas.repository.VotosRepository;
+import com.PedroA10.Opinas.service.OpcaoService;
+import com.PedroA10.Opinas.service.VotosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,47 +13,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/opcoes/{id}/votos")
+@RequestMapping("/votos")
 public class VotosController {
 
     @Autowired
-    private VotosRepository votosRepository;
-
-    @Autowired
-    private OpcaoRepository opcaoRepository;
+    private VotosService votosService;
 
     @PostMapping
-    public ResponseEntity<Votos> registrarVotos(@PathVariable Long id) {
-       Optional<Opcao> opcao = opcaoRepository.findById(id);
-       if (opcao.isEmpty()) {
-           return ResponseEntity.notFound().build();
-       }
-
-       Votos voto = new Votos();
-       voto.setOpcao(opcao.get());
-       Votos salvo = votosRepository.save(voto);
-
-       return  ResponseEntity.ok(salvo);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Votos>> listarVotos(@PathVariable Long id) {
-        Optional<Opcao> opcao = opcaoRepository.findById(id);
-
-        if (opcao.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        public ResponseEntity<Votos> votar(@RequestParam Long usuarioId, @RequestParam Long opcaoId) {
+            try {
+            Votos votos = votosService.registrarVoto(usuarioId, opcaoId);
+            return new ResponseEntity<>(votos, HttpStatus.CREATED);
+        }catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        List<Votos> votos = votosRepository.findByOpcaoId(id);
-        return ResponseEntity.ok(votos);
     }
 
-    @GetMapping("/contar")
-    public ResponseEntity<Long> contarVotos(@PathVariable Long id) {
-        if (!opcaoRepository.existsById(id)){
-            return ResponseEntity.notFound().build();
-        }
-        Long total =votosRepository.countByOpcaoId(id);
-        return ResponseEntity.ok(total);
+    @GetMapping("/opcao/{opcaoId}")
+    public List<Votos> listarVotos(@PathVariable Long opcaoId) {
+        return votosService.listarPorOpcao(opcaoId);
     }
-
 }

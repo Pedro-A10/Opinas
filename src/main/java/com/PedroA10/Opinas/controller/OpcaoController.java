@@ -1,9 +1,8 @@
 package com.PedroA10.Opinas.controller;
 
-import com.PedroA10.Opinas.model.Enquete;
 import com.PedroA10.Opinas.model.Opcao;
-import com.PedroA10.Opinas.repository.EnqueteRepository;
-import com.PedroA10.Opinas.repository.OpcaoRepository;
+import com.PedroA10.Opinas.service.EnqueteService;
+import com.PedroA10.Opinas.service.OpcaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,28 +15,24 @@ import java.util.List;
 public class OpcaoController {
 
     @Autowired
-    private OpcaoRepository opcaoRepository;
+    private OpcaoService opcaoService;
 
     @Autowired
-    private EnqueteRepository enqueteRepository;
+    private EnqueteService enqueteService;
 
     @PostMapping
-    public ResponseEntity<Opcao> criarOpcoes(@PathVariable Long enqueteId ,@RequestBody Opcao opcao) {
-        Enquete enquete = enqueteRepository.findById(enqueteId)
-            .orElseThrow(() -> new RuntimeException("Enquete não encontrada"));
-        opcao.setEnquete(enquete);
-        Opcao novaOpcao= opcaoRepository.save(opcao);
-
-        return new ResponseEntity<>(novaOpcao, HttpStatus.CREATED);
+    public ResponseEntity<Opcao> criarOpcoes(@PathVariable Long enqueteId, @RequestBody Opcao opcao) {
+       try {
+           Opcao novaOpcao = opcaoService.criarOpcao(enqueteId, opcao);
+           return new ResponseEntity<>(novaOpcao, HttpStatus.CREATED);
+       }catch (IllegalArgumentException e) {
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       }
     }
 
     @GetMapping
-    public ResponseEntity<Opcao> listarOpcaoPorId(@PathVariable Long id) {
+    public List<Opcao> listarOpcaoPorId(@PathVariable Long enqueteId) {
+        return opcaoService.findByEnqueteId(enqueteId);
 
-        if (!enqueteRepository.existsById(id)){
-            return ResponseEntity.notFound().build();
-        }
-        List<Opcao> opcoes = opcaoRepository.findByEnqueteId(id);
-        return ResponseEntity.ok((Opcao) opcoes);
     }
 }
