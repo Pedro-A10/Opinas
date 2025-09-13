@@ -7,9 +7,7 @@
 ## 🚀 Funcionalidades
 
 - **Gerenciamento de Usuários**: cadastro, listagem e exclusão.  
-- **Criação de Enquetes**: qualquer usuário pode criar suas próprias enquetes.  
-- **Opções de Voto**: cada enquete pode ter múltiplas opções de resposta.  
-- **Votação**: usuários podem registrar votos nas opções disponíveis.  
+- **Criação de Enquetes**: qualquer usuário pode criar suas próprias enquetes.    
 - **Resultados**: acompanhar as respostas das enquetes.  
 - **Segurança**: senhas armazenadas de forma criptografada com Spring Security.  
 
