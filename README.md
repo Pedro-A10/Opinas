@@ -1,43 +1,55 @@
-# Opinas
+# 📊 Opinas
 
-**Opinas** é uma aplicação desenvolvida em Java que permite coletar, analisar e visualizar opiniões públicas de forma eficiente.
+**Opinas** é uma aplicação desenvolvida em **Java com Spring Boot** que permite a criação de enquetes, votação em opções e visualização dos resultados de forma simples e eficiente.
+
+---
 
 ## 🚀 Funcionalidades
 
-- **Coleta de Dados**: Captura de opiniões de diversas fontes, como redes sociais e formulários online.
-- **Análise de Sentimentos**: Processamento de texto para identificar sentimentos predominantes (positivo, negativo, neutro)..
+- **Gerenciamento de Usuários**: cadastro, listagem e exclusão.  
+- **Criação de Enquetes**: qualquer usuário pode criar suas próprias enquetes.  
+- **Opções de Voto**: cada enquete pode ter múltiplas opções de resposta.  
+- **Votação**: usuários podem registrar votos nas opções disponíveis.  
+- **Resultados**: acompanhar as respostas das enquetes.  
+- **Segurança**: senhas armazenadas de forma criptografada com Spring Security.  
 
-## 📦 Dependências (Bibliotecas usadas)
+---
 
-- **spring-boot-starter-data-jpa** → Suporte a JPA/Hibernate para persistência de dados.
-- **spring-boot-starter-security** → Autenticação e autorização da aplicação.
-- **spring-boot-starter-validation** → Validação de dados via annotations (`@NotNull`, `@Size`, etc.).
-- **spring-boot-starter-web** → Criação de APIs REST e aplicações web.
-- **h2** → Banco de dados em memória, útil para testes rápidos.
-- **postgresql** → Driver JDBC para PostgreSQL.
-- **flyway-core** → Gerenciamento de migrations do banco de dados.
-- **flyway-database-postgresql** → Suporte do Flyway para PostgreSQL.
-- **lombok** → Reduz código repetitivo (getters, setters, construtores automáticos).
-- **spring-boot-devtools** → Hot reload em desenvolvimento (somente runtime).
-- **spring-boot-starter-test** → Ferramentas para testes unitários e integração.
-- **spring-security-test** → Ferramentas para testes de segurança (Spring Security).
+## 📦 Dependências Principais
+
+- `spring-boot-starter-data-jpa` → Persistência de dados com JPA/Hibernate.  
+- `spring-boot-starter-security` → Autenticação e autorização.  
+- `spring-boot-starter-validation` → Validação de dados com annotations (`@NotNull`, `@Size`, etc.).  
+- `spring-boot-starter-web` → Criação de APIs REST.  
+- `h2` → Banco de dados em memória (testes rápidos).  
+- `postgresql` → Driver JDBC para PostgreSQL.  
+- `flyway-core` + `flyway-database-postgresql` → Controle de migrations do banco.  
+- `lombok` → Redução de código repetitivo (getters, setters, construtores).  
+- `spring-boot-devtools` → Hot reload em desenvolvimento.  
+- `spring-boot-starter-test` → Testes unitários e de integração.  
+- `spring-security-test` → Testes de segurança.  
+
+---
 
 ## 🧪 Testando a API com Postman
 
-Você pode usar o **Postman** para testar os endpoints da API sem precisar de uma interface web.
+Você pode testar os endpoints usando o **Postman** ou **cURL**.
 
-### Endpoints de Usuários
+---
 
-1. **Criar Usuário**  
-   - **POST** `http://localhost:8080/usuarios`  
-   - **Body (JSON):**
-     ```json
-     {
-       "nome": "Pedro",
-       "email": "pedro@email.com",
-       "password": "SerialLain1221"
-     }
-     ```
+### 🔹 Usuários
+
+**Criar Usuário**  
+`POST http://localhost:8080/usuarios`  
+Body (JSON):  
+```json
+{
+  "nome": "Pedro",
+  "email": "pedro@email.com",
+  "password": "SerialLain1221"
+}
+
+```
    - **Observação:** A senha fornecida é **criptografada automaticamente** pelo sistema antes de ser armazenada no banco de dados, garantindo segurança dos dados.
    - **Resposta esperada:**  
      ```json
