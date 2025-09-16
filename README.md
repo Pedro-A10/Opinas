@@ -96,6 +96,9 @@ Body (JSON):
 
 5. **Deletar Enquete**  
    - **DELETE** `http://localhost:8080/enquetes/{id}`
+  
+## 📜 Licença
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 📝 Versão do Projeto
 
