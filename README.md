@@ -102,4 +102,5 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📝 Versão do Projeto
 
-- **Versão  1.0.0-beta**: Atualmente o repositório contém apenas o CRUD inicial de usuários, enquetes, opções e votos sendo a base do projeto.
+- **Versão 1.1.0-beta**: Adicionadas configurações de segurança (Spring Security), CORS, documentação da API com Swagger e migração de banco de dados com Flyway.
+
