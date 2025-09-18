@@ -1,8 +1,8 @@
 package com.PedroA10.Opinas.controller;
 
-import com.PedroA10.Opinas.model.Usuario;
-import com.PedroA10.Opinas.repository.UsuarioRepository;
+import com.PedroA10.Opinas.dto.UsuarioDTO;
 import com.PedroA10.Opinas.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +19,21 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public List<Usuario> listarUsuario() {
+    public List<UsuarioDTO> listarUsuario() {
         return usuarioService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> listarUsuarioPorId(@PathVariable Long id){
+    public ResponseEntity<UsuarioDTO> listarUsuarioPorId(@PathVariable Long id){
        return usuarioService.findById(id)
                .map(ResponseEntity::ok)
                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<UsuarioDTO> cadastrarUsuario(@RequestBody @Valid UsuarioDTO usuarioDTO) {
         try {
-            Usuario novoUsuariuo = usuarioService.criarUsuario(usuario);
+            UsuarioDTO novoUsuariuo = usuarioService.criarUsuario(usuarioDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuariuo);
         }catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().build();

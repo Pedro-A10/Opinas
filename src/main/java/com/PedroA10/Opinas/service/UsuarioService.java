@@ -1,5 +1,7 @@
 package com.PedroA10.Opinas.service;
 
+import com.PedroA10.Opinas.dto.UsuarioDTO;
+import com.PedroA10.Opinas.mapper.UsuarioMapper;
 import com.PedroA10.Opinas.model.Usuario;
 import com.PedroA10.Opinas.repository.UsuarioRepository;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -20,18 +23,25 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 
 
-    public List<Usuario> findAll() {
-        return usuarioRepository.findAll();
+    public List<UsuarioDTO> findAll() {
+        return usuarioRepository.findAll()
+                .stream()
+                .map(UsuarioMapper ::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Optional<Usuario> findById(Long id){
-        return usuarioRepository.findById(id);
+    public Optional<UsuarioDTO> findById(Long id){
+        return usuarioRepository.findById(id)
+                .map(UsuarioMapper ::toDTO);
     }
 
-    public Usuario criarUsuario(Usuario usuario){
-        if (usuario.getEmail().isEmpty()) {
+    public UsuarioDTO criarUsuario(UsuarioDTO usuarioDTO){
+        if (usuarioDTO.getEmail().isEmpty()) {
             throw new IllegalArgumentException("E-mail obrigatório.");
         }
+
+        Usuario usuario = UsuarioMapper.toEntity(usuarioDTO);
+
         if (usuario.getPassword().isEmpty()) {
             throw new IllegalArgumentException("Senha obrigatória.");
         }
@@ -39,7 +49,8 @@ public class UsuarioService {
         String senhaCriptografada = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(senhaCriptografada);
 
-        return usuarioRepository.save(usuario);
+        Usuario save =usuarioRepository.save(usuario);
+        return UsuarioMapper.toDTO(save);
     }
 
     public void deleteById(Long id) {
