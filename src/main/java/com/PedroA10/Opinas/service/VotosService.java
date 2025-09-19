@@ -1,6 +1,7 @@
 package com.PedroA10.Opinas.service;
 
-
+import com.PedroA10.Opinas.dto.votos.VotosResponseDTO;
+import com.PedroA10.Opinas.mapper.VotosMapper;
 import com.PedroA10.Opinas.model.Opcao;
 import com.PedroA10.Opinas.model.Usuario;
 import com.PedroA10.Opinas.model.Votos;
@@ -24,16 +25,16 @@ public class VotosService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Votos registrarVoto(Long usuarioId, Long opcaoId) {
+    public VotosResponseDTO registrarVoto(Long usuarioId, Long opcaoId) {
         Usuario usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
         Opcao opcao = opcaoRepository.findById(opcaoId)
                 .orElseThrow(() -> new IllegalArgumentException("Opção não encontrada"));
-        Votos votos = new Votos();
-        votos.setUsuario(usuario);
-        votos.setOpcao(opcao);
+        VotosResponseDTO votosDTO = new VotosResponseDTO(null, usuario.getId(), opcao.getId());
 
-        return votosRepository.save(votos);
+        Votos votos = VotosMapper.toModel(votosDTO, usuario, opcao);
+        Votos save = votosRepository.save(votos);
+        return VotosMapper.toDTO(save);
     }
 
     public List<Votos> listarPorOpcao(Long opcaoId) {

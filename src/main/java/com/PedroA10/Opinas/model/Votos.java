@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Votos extends Usuario {
+public class Votos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,8 @@
 package com.PedroA10.Opinas.service;
 
+import com.PedroA10.Opinas.dto.opcao.OpcaoRequestDTO;
+import com.PedroA10.Opinas.dto.opcao.OpcaoResponseDTO;
+import com.PedroA10.Opinas.mapper.OpcaoMapper;
 import com.PedroA10.Opinas.model.Enquete;
 import com.PedroA10.Opinas.model.Opcao;
 import com.PedroA10.Opinas.repository.EnqueteRepository;
@@ -18,12 +21,13 @@ public class OpcaoService {
     @Autowired
     private EnqueteRepository enqueteRepository;
 
-    public Opcao criarOpcao(Long enqueteId, Opcao opcao)  {
+    public OpcaoResponseDTO criarOpcao(Long enqueteId, OpcaoRequestDTO opcaoRequestDTO)  {
         Enquete enquete = enqueteRepository.findById(enqueteId)
                 .orElseThrow(() -> new IllegalArgumentException("Enquete não encontrada."));
-        opcao.setEnquete(enquete);
 
-        return opcaoRepository.save(opcao);
+        Opcao opcao = OpcaoMapper.toModel(opcaoRequestDTO);
+        Opcao save = opcaoRepository.save(opcao);
+        return OpcaoMapper.toDTO(save);
     }
 
     public List<Opcao> findByEnqueteId(Long enqueteId){

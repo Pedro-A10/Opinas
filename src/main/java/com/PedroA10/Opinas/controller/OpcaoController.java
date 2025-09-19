@@ -1,5 +1,7 @@
 package com.PedroA10.Opinas.controller;
 
+import com.PedroA10.Opinas.dto.opcao.OpcaoRequestDTO;
+import com.PedroA10.Opinas.dto.opcao.OpcaoResponseDTO;
 import com.PedroA10.Opinas.model.Opcao;
 import com.PedroA10.Opinas.service.EnqueteService;
 import com.PedroA10.Opinas.service.OpcaoService;
@@ -21,13 +23,13 @@ public class OpcaoController {
     private EnqueteService enqueteService;
 
     @PostMapping
-    public ResponseEntity<Opcao> criarOpcoes(@PathVariable Long enqueteId, @RequestBody Opcao opcao) {
-       try {
-           Opcao novaOpcao = opcaoService.criarOpcao(enqueteId, opcao);
-           return new ResponseEntity<>(novaOpcao, HttpStatus.CREATED);
-       }catch (IllegalArgumentException e) {
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }
+    public ResponseEntity<OpcaoResponseDTO> criarOpcoes(@PathVariable Long enqueteId, @RequestBody OpcaoRequestDTO opcaoDTO) {
+        try {
+            OpcaoResponseDTO novaOpcao = opcaoService.criarOpcao(enqueteId, opcaoDTO);
+            return new ResponseEntity<>(novaOpcao, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping
