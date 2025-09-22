@@ -102,7 +102,7 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📝 Versão do Projeto
 
-- **1.2.0-beta**: CRUD inicial + pacote `config` (Swagger, Security, Flyway, CORS) + camada DTO/Mapper.
+- **1.2.1-beta**: Padronização da nomenclatura de métodos e endpoints para inglês / Standardization of method and endpoint naming to English:
 
 - 📌 Confira o histórico de mudanças no [CHANGELOG.md](./CHANGELOG.md).
 
