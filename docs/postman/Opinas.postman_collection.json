@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "Opinas",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "Coleção Postman para testar a API Opinas com variável de ambiente {{baseUrl}}",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/user"
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/user/1"
+          }
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"Pedro Augusto\",\n  \"email\": \"pedro@example.com\",\n  \"password\": \"senha123\"\n}"
+            },
+            "url": "{{baseUrl}}/user"
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/user/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Polls",
+      "item": [
+        {
+          "name": "List Polls",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/polls"
+          }
+        },
+        {
+          "name": "Get Poll by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/polls/1"
+          }
+        },
+        {
+          "name": "Create Poll",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {
+              "mode":"raw",
+              "raw": "{\n  \"id\": 1,\n  \"title\": \"Qual sua linguagem de programação favorita?\",\n  \"description\": \"Vote na sua linguagem preferida.\",\n  \"options\": [\n    {\"id\": 1, \"text\": \"Java\"},\n    {\"id\": 2, \"text\": \"Python\"}\n  ],\n  \"userId\": 1\n}"
+            },
+            "url": "{{baseUrl}}/polls"
+          }
+        },
+        {
+          "name": "Delete Poll",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/polls/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Options",
+      "item": [
+        {
+          "name": "List Options by Poll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/polls/1/options"
+          }
+        },
+        {
+          "name": "Create Option",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {
+              "mode":"raw",
+              "raw": "{\n  \"id\": 1,\n  \"pollId\": 1,\n  \"text\": \"Java\"\n}"
+            },
+            "url": "{{baseUrl}}/polls/1/options"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Votes",
+      "item": [
+        {
+          "name": "List Votes by Option",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/votes/option/1"
+          }
+        },
+        {
+          "name": "Vote",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {
+              "mode":"raw",
+              "raw": "{\n  \"userId\": 1,\n  \"optionId\": 2\n}"
+            },
+            "url": "{{baseUrl}}/votes?userId=1&optionId=2"
+          }
+        }
+      ]
+    }
+  ]
+}
