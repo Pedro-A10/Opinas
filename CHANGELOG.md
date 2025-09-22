@@ -6,7 +6,14 @@ e este projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ---
 
-## [1.1.0-beta] -16-092025
+## [1.2.0-beta] - 09-19-2025
+### ✨ Adicionado
+- Adição da camada **DTO** e **Mapper** para separar entidades de modelos de transferência de dados.
+- Ajustes na arquitetura para maior desacoplamento e clareza do código.
+    
+---
+
+## [1.1.0-beta] - 09-16-2025
 ### ✨ Adicionado
 - Configuração de **Segurança** com Spring Security.
 - Configuração de **CORS**.
@@ -15,6 +22,6 @@ e este projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ---
 
-## [1.0.0-beta] - 12-09-2025
+## [1.0.0-beta] - 09-12-2025
 ### ✨ Adicionado
 - CRUD inicial de **usuários**, **enquetes**, **opções** e **vote**.

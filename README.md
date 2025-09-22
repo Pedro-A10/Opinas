@@ -102,7 +102,7 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 📝 Versão do Projeto
 
-- **Versão 1.1.0-beta**: Adicionadas configurações de segurança (Spring Security), CORS, documentação da API com Swagger e migração de banco de dados com Flyway.
+- **1.2.0-beta**: CRUD inicial + pacote `config` (Swagger, Security, Flyway, CORS) + camada DTO/Mapper.
 
 - 📌 Confira o histórico de mudanças no [CHANGELOG.md](./CHANGELOG.md).
 
