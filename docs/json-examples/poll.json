@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "title": "Qual sua linguagem de programação favorita?",
+  "description": "Vote na sua linguagem preferida.",
+  "options": [
+    {
+      "id": 1,
+      "text": "Java"
+    },
+    {
+      "id": 2,
+      "text": "Python"
+    }
+  ]
+}
