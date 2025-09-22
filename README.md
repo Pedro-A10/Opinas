@@ -67,7 +67,7 @@ Body (JSON):
      {
        "titulo": "Qual linguagem você prefere?",
        "mensagem": "Vote na sua favorita!",
-       "comentarios": "Primeira enquete de teste"
+       "comentarios": "Primeira poll de teste"
      }
      ```
 
@@ -78,7 +78,7 @@ Body (JSON):
      {
        "titulo": "Qual sua linguagem favorita?",
        "mensagem": "Vote na que você mais gosta!",
-       "usuario": { "id": 2 },
+       "user": { "id": 2 },
        "opcoes": [
          { "texto": "Java" },
          { "texto": "Python" },

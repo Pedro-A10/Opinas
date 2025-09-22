@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "Opinas",
                 version = "1.0.0",
-                description = "Documentação da API do Opinas",
-                contact = @Contact(name = "Pedro Augusto", email = "opinas.enquetes@gmail.com"),
+                description = "Opinas API Documentation",
+                contact = @Contact(name = "Pedro Augusto de Souza Rodrigues", email = "opinas.enquetes@gmail.com"),
                 license = @License(name = "MIT License", url = "https://opensource.org/licenses/MIT")
         ),
         security = @SecurityRequirement(name = "bearerAuth")
