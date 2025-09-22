@@ -1,4 +1,4 @@
-📊 Opinas  
+# 📊 Opinas  
 Opinas é uma aplicação desenvolvida em Java com Spring Boot que permite a criação de enquetes, votação em opções e visualização dos resultados de forma simples e eficiente.
 
 ---
