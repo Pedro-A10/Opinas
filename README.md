@@ -44,11 +44,11 @@ Exemplos de payloads para os endpoints podem ser encontrados em: [📄 JSON Exam
 ---
 
 📜 Licença  
-Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE] para mais detalhes.
 
 ---
 
 📝 Versão do Projeto  
 1.3.0-beta: Adição de exceções customizadas e implementação da GlobalExceptionHandler / Added custom exceptions and implementerd GlobalExceptionHandler
 
-📌 Confira o histórico de mudanças no CHANGELOG.md.
+📌 Confira o histórico de mudanças no [CHANGELOG.md].
