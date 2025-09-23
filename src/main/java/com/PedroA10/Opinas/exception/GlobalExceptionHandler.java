@@ -57,4 +57,10 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.CONFLICT)
                 .body(ex.getMessage());
     }
+    @ExceptionHandler(OptionNotFoundException.class)
+    public ResponseEntity<String> handOptionNotFound(OptionNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ex.getMessage());
+    }
 }

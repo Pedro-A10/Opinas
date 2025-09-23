@@ -1,6 +1,8 @@
 package com.PedroA10.Opinas.service;
 
 import com.PedroA10.Opinas.dto.vote.VoteResponseDTO;
+import com.PedroA10.Opinas.exception.OptionNotFoundException;
+import com.PedroA10.Opinas.exception.UserNotFoundException;
 import com.PedroA10.Opinas.mapper.VoteMapper;
 import com.PedroA10.Opinas.model.Option;
 import com.PedroA10.Opinas.model.User;
@@ -27,9 +29,9 @@ public class VoteService {
 
     public VoteResponseDTO registerVote(Long userId, Long optionId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found."));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
         Option option = optionRepository.findById(optionId)
-                .orElseThrow(() -> new IllegalArgumentException("Option not found."));
+                .orElseThrow(() -> new OptionNotFoundException("Option not found."));
         VoteResponseDTO voteDTO = new VoteResponseDTO(null, user.getId(), option.getId());
 
         Vote vote = VoteMapper.toModel(voteDTO, user, option);

@@ -2,6 +2,9 @@ package com.PedroA10.Opinas.service;
 
 import com.PedroA10.Opinas.dto.user.UserRequestDTO;
 import com.PedroA10.Opinas.dto.user.UserResponseDTO;
+import com.PedroA10.Opinas.exception.EmailNotFoundException;
+import com.PedroA10.Opinas.exception.UserAlreadyExistsException;
+import com.PedroA10.Opinas.exception.UserNotFoundException;
 import com.PedroA10.Opinas.mapper.UserMapper;
 import com.PedroA10.Opinas.model.User;
 import com.PedroA10.Opinas.repository.UserRepository;
@@ -39,7 +42,10 @@ public class UserService {
 
     public UserResponseDTO createUser(@Valid UserRequestDTO userRequestDTO){
         if (userRequestDTO.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("Email required.");
+            throw new EmailNotFoundException("Email required.");
+        }
+        if (userRepository.ExistsByEmail(userRequestDTO.getEmail())){
+            throw new UserAlreadyExistsException("User with this email already exists." + userRequestDTO.getEmail());
         }
 
         User user = UserMapper.toModel(userRequestDTO);
@@ -60,6 +66,6 @@ public class UserService {
 
     public User findEntityById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 }

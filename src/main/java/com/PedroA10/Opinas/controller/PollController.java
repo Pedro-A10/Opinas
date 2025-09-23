@@ -3,6 +3,7 @@ package com.PedroA10.Opinas.controller;
 import com.PedroA10.Opinas.dto.poll.PollRequestDTO;
 import com.PedroA10.Opinas.dto.poll.PollResponseDTO;
 
+import com.PedroA10.Opinas.exception.PollNotFoundException;
 import com.PedroA10.Opinas.model.User;
 import com.PedroA10.Opinas.service.PollService;
 import com.PedroA10.Opinas.service.UserService;

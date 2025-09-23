@@ -2,6 +2,7 @@ package com.PedroA10.Opinas.service;
 
 import com.PedroA10.Opinas.dto.option.OptionRequestDTO;
 import com.PedroA10.Opinas.dto.option.OptionResponseDTO;
+import com.PedroA10.Opinas.exception.PollNotFoundException;
 import com.PedroA10.Opinas.mapper.OptionMapper;
 import com.PedroA10.Opinas.model.Poll;
 import com.PedroA10.Opinas.model.Option;
@@ -23,7 +24,7 @@ public class OptionService {
 
     public OptionResponseDTO createOption(Long pollId, OptionRequestDTO optionRequestDTO)  {
         Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(() -> new IllegalArgumentException("Poll not found."));
+                .orElseThrow(() -> new PollNotFoundException("Poll not found."));
 
         Option option = OptionMapper.toModel(optionRequestDTO);
         Option save = optionRepository.save(option);
