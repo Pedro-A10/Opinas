@@ -49,6 +49,6 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para m
 ---
 
 📝 Versão do Projeto  
-1.2.1-beta: Padronização da nomenclatura de métodos e endpoints para inglês / Standardization of method and endpoint naming to English
+1.3.0-beta: Adição de exceções customizadas e implementação da GlobalExceptionHandler / Added custom exceptions and implementerd GlobalExceptionHandler
 
 📌 Confira o histórico de mudanças no CHANGELOG.md.

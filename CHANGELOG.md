@@ -6,9 +6,16 @@ e este projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.0-beta] - 23-09-2025
+### ✨ Atualização / Updated
+- Criação de **Exceções** personalizadas / Custom **Exceptions** created.
+- Implementação do **GlobalExceptionHandler** para centralizar tratamentos / Implementation of **GlobalExceptionHandler** to centralize error handling.
+
+---
+
 ## [1.2.1-beta] - 22-09-2025
 ### ✨ Atualização / Updated
--Padronização da nomenclatura de métodos e endpoints para inglês / Standardization of method and endpoint naming to English:
+- Padronização da nomenclatura de métodos e endpoints para inglês / Standardization of method and endpoint naming to English:
 
 ```
 listarEnquetes        → listPolls()          / GET /polls
