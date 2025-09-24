@@ -1,4 +1,4 @@
-package com.PedroA10.Opinas.config;
+package com.PedroA10.Opinas.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
