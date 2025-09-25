@@ -49,6 +49,6 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 ---
 
  Versão do Projeto  
-1.4.0-beta: Adição de autenticação (DTOs de login e registro), pacote e configuração de segurança finalizados. Correção de erros gerais. / Authentication added (Login and Register DTOs), security package and configuration completed. General bug fixes.
+1.4.0: Adição de autenticação (DTOs de login e registro), pacote e configuração de segurança finalizados. Correção de erros gerais. / Authentication added (Login and Register DTOs), security package and configuration completed. General bug fixes.
 
 Confira o histórico de mudanças no [CHANGELOG.md](CHANGELOG.md).
