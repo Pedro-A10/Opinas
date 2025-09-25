@@ -6,6 +6,16 @@ e este projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.4.0-beta] - 25-09-2025
+### ✨ Adicionado / Added
+- DTOs de login e registro implementados / Login and Register DTOs implemented.
+- Pacote e configuração de segurança concluídos / Security package and configuration completed.
+
+### 🐛 Corrigido / Fixed
+- Correção de erros gerais no sistema / General system bug fixes.
+
+---
+
 ## [1.3.0-beta] - 23-09-2025
 ### ✨ Atualização / Updated
 - Criação de **Exceções** personalizadas / Custom **Exceptions** created.
