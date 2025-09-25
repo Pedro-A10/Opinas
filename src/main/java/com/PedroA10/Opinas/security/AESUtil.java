@@ -1,6 +1,5 @@
 package com.PedroA10.Opinas.security;
 
-import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -9,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-@Component
 public class AESUtil {
 
         private final String secretKey;

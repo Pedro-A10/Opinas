@@ -44,7 +44,7 @@ public class UserService {
         if (userRequestDTO.getEmail().isEmpty()) {
             throw new EmailNotFoundException("Email required.");
         }
-        if (userRepository.ExistsByEmail(userRequestDTO.getEmail())){
+        if (userRepository.existsByEmail(userRequestDTO.getEmail())){
             throw new UserAlreadyExistsException("User with this email already exists." + userRequestDTO.getEmail());
         }
 

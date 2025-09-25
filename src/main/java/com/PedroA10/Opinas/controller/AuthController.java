@@ -26,8 +26,12 @@ public class AuthController {
   @Autowired
   JwtService jwtService;
 
+  private final AuthService authService;
+
   @Autowired
-  AuthService authService;
+  public AuthController(AuthService authService) {
+    this.authService = authService;
+  }
 
   @Autowired
   AuthenticationManager authenticationManager;
@@ -37,7 +41,7 @@ public class AuthController {
     return ResponseHandler.generateResponse("User resister successfully", HttpStatus.CREATED, authService.register(registerRequestDTO));
   }
 
-  @PostMapping("register")
+  @PostMapping("login")
   public ResponseEntity<Object> login(@Valid @RequestBody LoginRequestDTO loginRequestDTO) {
     try {
       Authentication authentication = authenticationManager
